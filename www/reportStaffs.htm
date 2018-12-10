@@ -1,0 +1,136 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  
+  
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Report</title>
+
+</head>
+
+<body background="">
+
+    <div id="app">
+        <nav class="navbar navbar-default navbar-static-top">
+                    <a class="navbar-brand " href="#"> <img class="logo" src="photo/logo.png" width="300" height="50"></a>
+               <br>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <ul class="nav navbar-nav">&nbsp;</ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item active">
+                            <h4> <a class="nav-link" href="logout.php">&nbsp;&nbsp;Logout </a></h4>
+                        </li>
+                        <li class="nav-item active">
+                            <h4> <a class="nav-link" href="home.php">&nbsp;&nbsp;Search <span class="sr-only">(current)</span></a></h4>
+                        </li>
+                        <li class="nav-item active">
+                            <h4> <a class="nav-link" href="COCAcademicStaff.php">&nbsp;&nbsp;COC Academic Staff</a></h4>
+                        </li>
+                        <li class="nav-item active">
+                            <h4> <a class="nav-link" href="contact.php">&nbsp;&nbsp;Contact&nbsp;&nbsp;</a></h4>
+                        </li>
+                        <li class="nav-item active">
+                            <h4> <a class="nav-link" href="" id="userD" charset="UTF-8">&nbsp;&nbsp;</a></h4>
+                        </li>
+                        
+                    </ul>
+                </div>
+        </nav>
+        <div class="container" style=background-color:#33c0ca;>
+            <div class="navbar-header">
+                <h3 style=color:#f4f8f8;>Report</h3>
+
+            </div>
+
+        </div>
+        <br>
+        <div class="container">
+            <div class="row" style=background-color:#f2f1f1;>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <legend>
+                        <ul class="nav navbar-nav">&nbsp;</ul>
+                        <ul class="nav navbar-nav navbar-left"></ul>
+                        <div class="col-md-12">
+                            <h4 id="namestaff">Report All</h4>
+                        </div>
+
+                        <button class="btn btn-info" onclick='downloadCSV({ filename: "stock-data.csv" });' id='ExportA'>
+
+                            &nbsp; &nbsp; Export &nbsp; &nbsp;
+
+                        </button>
+                        <br>
+
+                        </ul>
+                        <br>
+                    </legend>
+                </div>
+
+                <div class="col-md-3  " id="image">
+                    <h3 id="btn">Result</h3>
+                    <div id="NumberCitations"></div>                                  
+                </div>
+
+                <div class="col-md-5 " id="showC" style=background-color:#ffffff;>
+                    <h4>Graph of Articles</h4>
+                    <br>
+                    <canvas class="col-md-4 " id="showGraphofCitations">
+
+                    </canvas>
+                    <!-- <button class="btn btn-info"  id="saveA" download="chartPng.jpg"> Save </button> -->
+                    <button type="button" class="btn btn-info" onclick="saveArt();" ><a id="link1" download="ChartPng.png">Save as png</a></button>
+                    <br>
+                    <br>
+                    <br>
+                    <h4>Graph of Type</h4>
+                    <br>
+                    <canvas class="col-md-4 " id="showGraphofArticles">
+                        
+                    </canvas>
+                    <button type="button" class="btn btn-info" onclick="saveArtType();" ><a id="link2" download="ChartPng.png">Save as png</a></button>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <!-- <table style="width:90%" align="center" id="ShowAuthor">
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                        </tr>
+                    </table> -->
+
+                    <!-- <div id="showResult"></div> -->
+                    <!-- <div id="showResult1"></div>
+                    <button class="btn btn-info" onclick='showData();' id='shData'>show</button>
+                    <button class="btn btn-info" onclick='addData();' id='aData'>add</button>
+                    <button class="btn btn-info" onclick='deleteData();' id='dData'>delete</button>
+                </div> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+   
+    </div>
+
+    </div>
+    
+    <script src="js/user.js"></script>
+    <script src="js/reportStaff.js"></script>
+
+
+</body>
