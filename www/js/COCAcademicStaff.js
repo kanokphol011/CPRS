@@ -1,6 +1,6 @@
 var xmlhttp = new XMLHttpRequest();
 $(function(){
-    var url ='https://staffcoc.000webhostapp.com/db.json';
+    var url ='https://staffcoc.herokuapp.com/getUser';
     xmlhttp.open("GET", url, false);
     xmlhttp.send();
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)

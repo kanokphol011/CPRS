@@ -9,7 +9,7 @@ var name,lastname,meet,issuse,total,to,you;
 $(function(){
     // is the string "id"
     
-     url ='https://staffcoc.000webhostapp.com/db.json';
+     url ='https://staffcoc.herokuapp.com/getUser/';
     xmlhttp.open("GET", url, false);
     xmlhttp.send();
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)

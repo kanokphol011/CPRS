@@ -81,7 +81,7 @@ session_start();
                        
                         var choosesNames=document.getElementById("choosesName");
                         var xmlhttps = new XMLHttpRequest();
-                        var urls ='https://staffcoc.000webhostapp.com/db.json';
+                        var urls ='https://staffcoc.herokuapp.com/getUser';
                         xmlhttps.open("GET", urls, false);
                         xmlhttps.send();
                         if (xmlhttps.readyState == 4 && xmlhttps.status == 200)
@@ -95,11 +95,11 @@ session_start();
                            var option = document.createElement('option');
                            option.value = l+1;     
                            passs = urls+'/'+ option.value;
-                           console.log(jsResult["staffcoc"][l]);
+                        //    console.log(jsResult["staffcoc"][l]);
                   
                       
                            option.textContent = jsResult["staffcoc"][l]["position"]+jsResult["staffcoc"][l]["staffName"]+"  "+jsResult["staffcoc"][l]["staffLastName"];
-                           console.log(option.textContent);
+                        //    console.log(option.textContent);
                            choosesNames.appendChild(option); 
                         }
                     }
