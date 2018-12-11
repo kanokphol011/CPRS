@@ -73,7 +73,7 @@ session_start();
         </nav>
         <div class="container" style=background-color:#33c0ca;>
             <div class="navbar-header">
-                <h1 style=color:#f4f8f8;>Search by COC Academic staff</h1>
+                <h1 style=color:#f4f8f8;>Add COC Academic staff</h1>
 
             </div>
 
@@ -87,29 +87,19 @@ session_start();
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <ul class="nav navbar-nav">&nbsp;</ul>
                         <ul class="nav navbar-nav navbar-left"></ul>
-                        <ul class="col-md-8">
+                        <ul class="col-md-10">
                          
-                            <h3>List of COC academic staff</h3>
+                            <h3>Add </h3>
                             
                         </ul>
                         <!-- <ul class="nav navbar-nav navbar-right"> -->
                         <!-- <li> -->
-                        <a href="addStaff.php">
+                 
+                        <a href="COCAcademicStaff.php">
                             
-                            <button class="btn btn-primary btn-info" type="submit" id="searchB">
-                                    Add Staff  &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-plus"></span> </button></a>&nbsp;  &nbsp;
-                         <a href="deleteStaff.php">
-                            <button class="btn btn-primary btn-danger" type="submit" id="searchB">
-                                    Delete Staff  &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-minus"></span> </button></a>&nbsp;  &nbsp; 
-                       
-                        
-                        <a href="allStaff.php">
-                            
-                            <button class="btn btn-primary" type="submit" id="searchB">
-                                    Search All &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-search"></span> </button></a>
+                            <button class="btn btn-primary btn-lg" type="submit" id="searchB">
+                                    back &nbsp;  &nbsp;   
+                            </button></a>
                         <!-- </ul> -->
                     </div>
                   
@@ -124,12 +114,35 @@ session_start();
 
 
 
-                        <div class="col-md-6">
-                            <div class="showNameAj" id="showNameAj">
+                        <div class="col-md-5">
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><h5>Name</h5></span>
+                                 </div>
+                          <input type="text" class="form-control"id="name" name="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                          </div>
+                      <br><br>
+                           <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><h5>Lastname</h5></span>
+                                 </div>
+                          <input type="text" class="form-control"id="lastname" name="lastname" placeholder="Lastname" aria-label="Lastname" aria-describedby="basic-addon1">
+                          </div>
 
+                           <br><br>
+                            <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><h5>Position</h5></span>
+                                 </div>
+                          <input type="text" class="form-control" id="position" name="position" placeholder="Position" aria-label="Position" aria-describedby="basic-addon1">
+                          </div>
                             </div>
-                            
-    
+
+                            <button class="btn btn-success btn-lg" type="submit" id="Add">
+                                   Add &nbsp;  &nbsp;   
+                            </button></a>
+                            </div>
+                           
 
                         </div>
 
@@ -154,5 +167,5 @@ session_start();
 
     </div>
     
-    <script src="js/COCAcademicStaff.js"></script>
+    <script src="js/addStaff.js"></script>
 </body>
