@@ -6,7 +6,7 @@ let initials = params.get("initials");
 let lastname = params.get("lastname");
 let yearfrom = parseInt(params.get("year")); 
 let yearto = parseInt(params.get("to"));
-var maxCite, numJor, numPro, numBook;
+var maxCite, numJor, numPro, numBook ,numBookS;
 var numCitation = new Array;
 var artType = new Array;
 var stockData = new Array;
@@ -76,6 +76,7 @@ $(function(){
         numJor=0;
         numPro=0;
         numBook=0;
+        numBookS=0;
        
         var numCite = new Array;
         var datastaff = jsResult["search-results"]["entry"].length;
@@ -122,6 +123,8 @@ $(function(){
                 }else if(issuse2=='Journal'){
                     numJor += 1;
                 }else if(issuse2=='Book Series'){
+                    numBookS += 1;
+                }else if(issuse2=='Book'){
                     numBook += 1;
                 }
 
@@ -132,7 +135,7 @@ $(function(){
             // scopusID
             var scopusID = jsResult["search-results"]["entry"][i]["dc:identifier"];
             dataScopusID[i] = scopusID.split("SCOPUS_ID:").pop();
-            console.log(dataScopusID[i]);
+            // console.log(dataScopusID[i]);
             
         }
 
@@ -189,11 +192,12 @@ $(function(){
         // The data for our dataset
         data: {
             datasets: [{
-                data: [numJor, numPro , numBook],
+                data: [numJor, numPro , numBook, numBookS],
                 backgroundColor: [
                     'rgba(255, 99, 105, 0.6)',
                     'rgba(100, 59, 255, 0.6)',
-                    'rgba(50, 150, 200, 0.6)'
+                    'rgba(50, 150, 200, 0.6)',
+                    'rgba(150, 150, 50, 0.6)'
                 ]
             }],
         
@@ -201,7 +205,9 @@ $(function(){
             labels: [
                 'Journal',
                 'Conference Proceeding',
-                'Book Series'
+                'Book',
+                'Book Series',
+
             ],
             
         },

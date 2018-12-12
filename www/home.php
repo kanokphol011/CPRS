@@ -11,6 +11,13 @@ session_start();
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <style>
+        p{
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -21,6 +28,7 @@ session_start();
     <script>
 
         function collectJSON(){
+            document.getElementById("show").innerHTML = "";
          var xmlhttp = new XMLHttpRequest();
          var all = document.getElementById("all").value;
          var url ='';
@@ -48,10 +56,10 @@ session_start();
               var jsResult = JSON.parse(result);
               
               var c = jsResult["search-results"]["entry"].length;
-              var r = "";
+              var r = "<div class='card'><div class='card-body'>";
               for(i =0;i<c;i++){
                 var meet =jsResult["search-results"]["entry"][i]["link"][2]["@href"];
-                   r += "<h4><b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</h4></br>";
+                   r += "<h4><b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</h4>"+ "<p> Number of Citations:"+ jsResult["search-results"]["entry"][i]["citedby-count"]+"</p><br><br>";
               }
              
              
