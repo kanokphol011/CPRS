@@ -7,6 +7,7 @@ let yearto = parseInt(params.get("to"));
 let options = {};
 var url='';
 var name,lastname,meet,issuse,total,to,you,initials;
+var authorAllurl = new Array;
 $(function(){
     // is the string "id"
     
@@ -60,7 +61,30 @@ $(function(){
         
            meet =jsResult["search-results"]["entry"][i]["link"][2]["@href"];
           // console.log(meet);
-            you += i+1 +". <b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</br>"+ "<p> Number of Citations:"+ jsResult["search-results"]["entry"][i]["citedby-count"]+"</p><br><br>";        }
+            you += i+1 +". <b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"];        
+        
+            authorAllurl[i] = jsResult["search-results"]["entry"][i]["prism:url"];
+            var urlAuthor = authorAllurl[i]+'?field=authors&apiKey=185547eee67ed06e5e817a0f227d23fe&httpAccept=application%2Fjson';
+            
+                   xmlhttp.open("GET", urlAuthor, false);
+                   xmlhttp.send();
+                   if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                       you += "<h5><b class='auth'>Authors : </b>";
+                    var resultA = xmlhttp.responseText;
+                    var jsResultA = JSON.parse(resultA);
+                    var datastaff = jsResultA["abstracts-retrieval-response"]["authors"]["author"].length;
+
+                    for(a=0;a<datastaff;a++){
+                        if(a>=0 && a<(datastaff-1)){
+                            you += jsResultA["abstracts-retrieval-response"]["authors"]["author"][a]["ce:indexed-name"]+",";
+                        }else if(a==(datastaff-1)){
+                            you += jsResultA["abstracts-retrieval-response"]["authors"]["author"][a]["ce:indexed-name"]+"</h5>";
+                        }
+                    }
+                   }
+                   you += "<p> Number of Citations: "+ jsResult["search-results"]["entry"][i]["citedby-count"]+"</p><br><br>";
+        
+        }
          document.getElementById("showresultStaff").innerHTML = you;
          //document.getElementById("NumberofArticles").innerHTML = total;
     }else {

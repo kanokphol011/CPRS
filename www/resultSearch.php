@@ -9,7 +9,52 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style> body  {opacity:0;}</style>
+    <script>
+        window.onload = function() {setTimeout(function(){document.body.style.opacity="100";},500);};
+    </script>
+
+<style> 
+        i {
+            line-height: 2;
+            letter-spacing: 0.5px;
+            font-size: 15px;
+            
+            
+        }
+        a {
+            font-size: 15px;
+            
+        }
+        h1.topValue {
+            font-size: 30px;
+        }
+        select.yearselect{
+            font-size: 15px;
+        }
+        select.yearselectto{
+            font-size: 15px;
+        }
+        label{
+            font-size: 15px;
+        }
+        b{
+            font-size: 18px;
+        }
+        i.dateData{
+            font-size: 15px;
+        }
+        p{
+            font-size: 13px;
+            font-weight: bold;
+        }
+        b.auth{
+            font-size: 13px;
+        }
+        
+    </style>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

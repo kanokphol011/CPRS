@@ -35,7 +35,7 @@ session_start();
          var xmlhttp = new XMLHttpRequest();
          var all = document.getElementById("all").value;
          var url ='';
-         console.log(all,checkBox.checked);
+        //  console.log(all,checkBox.checked);
         // var url = 'https://api.elsevier.com/content/search/scopus?query=AUTHOR-NAME('+auth+')&apiKey=c1012bdfeae663cbf772fda975c25fd3';
          
         if (!all === false && !checkBox.checked === false){
