@@ -94,7 +94,7 @@ session_start();
                         </ul>
                         <!-- <ul class="nav navbar-nav navbar-right"> -->
                         <!-- <li> -->
-                        <a href="addStaff.php">
+                        <!-- <a href="addStaff.php">
                             
                             <button class="btn btn-primary btn-info" type="submit" id="searchB">
                                     Add Staff  &nbsp;  &nbsp;   
@@ -102,7 +102,7 @@ session_start();
                          <a href="deleteStaff.php">
                             <button class="btn btn-primary btn-danger" type="submit" id="searchB">
                                     Delete Staff  &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-minus"></span> </button></a>&nbsp;  &nbsp; 
+                            <span class="glyphicon glyphicon-minus"></span> </button></a>&nbsp;  &nbsp;  -->
                        
                         
                         <a href="allStaff.php">
