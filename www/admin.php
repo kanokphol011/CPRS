@@ -39,7 +39,7 @@ session_start();
 						<ul class="nav navbar-nav navbar-right">
 						<br>
 							<li><a href="signin.php" id="btn">Signin</a></li>
-							<li><a href="admin.php" id="btn">Admin</a></li>
+                            <li><a href="admin.php" id="btn">Admin</a></li>
 						</ul>
 					</div>
 				</div>
@@ -47,7 +47,7 @@ session_start();
 	<br>
 			<div  class="container "style="background-color:#33c0ca;">
 				<div class="navbar-header">
-					<h1 style=color:#f4f8f8;>Sign  in</h1>
+					<h1 style=color:#f4f8f8;>Sign  in (admin)</h1>
 				
 				</div>
 				
@@ -68,7 +68,7 @@ session_start();
 
 
 							<div class="container">
-								<form id="form" class="form-horizontal" action="login.php" method="POST" role="form">
+								<form id="form" class="form-horizontal" action="checkAdmin.php" method="POST" role="form">
 									<div class="form-group">
 										<div class="col-md-8">
 										<label for="username" class="col-md-1 control-label">Username</label>
