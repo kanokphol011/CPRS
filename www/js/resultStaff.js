@@ -5,7 +5,7 @@ let tid = params.get("id");
 let options = {};
 
 var url='';
-var name,lastname,meet,issuse,total,to,you;
+var name,lastname,meet,issuse,total,to,you,initials;
 $(function(){
     // is the string "id"
     
@@ -26,6 +26,8 @@ $(function(){
             if(parseInt(jsResult["staffcoc"][i]["id"])===parseInt(tid)){
                name =jsResult["staffcoc"][i]["staffName"].toLowerCase();
                lastname = jsResult["staffcoc"][i]["staffLastName"].toLowerCase();
+               initials = jsResult["staffcoc"][i]["initials"].toLowerCase();
+
             
               r += "<b>"+ jsResult["staffcoc"][i]["position"] + "</b> <b> "+jsResult["staffcoc"][i]["staffName"]+"</b> <b>"+jsResult["staffcoc"][i]["staffLastName"]+"</b></a></br>";
               
@@ -41,7 +43,7 @@ $(function(){
 $(function(){
     var x ='https://api.elsevier.com/content/search/scopus?query=ALL(';
     var y=')&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url = x+name+'%20AND%20'+lastname+y;
+    url = x+initials+'%20AND%20'+lastname+y;
     console.log(url);
     xmlhttp.open("GET", url, false);
     xmlhttp.send();

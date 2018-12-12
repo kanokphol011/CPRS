@@ -1,4 +1,4 @@
-    var xmlhttp = new XMLHttpRequest();
+var xmlhttp = new XMLHttpRequest();
 var urlSearchParams = URL.searchParams;
 let params = (new URL(document.location)).searchParams;
 let tid = params.get("id");
@@ -140,7 +140,7 @@ $(function(){
         var text = "none" ;
         document.getElementById("showresult").innerHTML = text;
     }
-    document.getElementById("NumberCitations").innerHTML = 'Number of Citation :'+maxCite;
+    document.getElementById("NumberCitations").innerHTML = 'Number of Citations :'+maxCite;
 
  })
 

@@ -104,9 +104,7 @@ session_start();
                     </div>
                   
                 </legend>
-                <div id="show">
-                    
-                </div>
+                
                 <div class="col-md-9">
                     <br>
 
@@ -130,19 +128,19 @@ session_start();
                           </div>
 
                            <br><br>
-                            <div class="input-group mb-2">
-                          <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><h5>Position</h5></span>
-                                 </div>
-                          <input type="text" class="form-control" id="position" name="position" placeholder="Position" aria-label="Position" aria-describedby="basic-addon1">
-                          </div>
-                            </div>
+                            
 
-                            <button class="btn btn-success btn-lg" type="submit" id="Add" onclick="Add();">
-                                   Add &nbsp;  &nbsp;   
-                            </button></a>
+                            <button class="btn btn-primary btn-lg" type="submit" id="Add" onclick="search();">
+                            Search &nbsp;  &nbsp;   
+                            </button>
+                            &nbsp;  &nbsp; 
+                            <button class="btn btn-danger btn-lg" type="submit" id="Add" onclick="deleteStaff();">
+                            Delete &nbsp;  &nbsp;   
+                            </button>
                             </div>
-                           
+                            <div id="show">
+                    
+                    </div>
 
                         </div>
 
