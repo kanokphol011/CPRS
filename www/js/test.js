@@ -15,8 +15,7 @@ var toAdd = document.createDocumentFragment();
 var to = [];
 
 
-$(
-  function () {
+$(function () {
 
     url = 'https://staffcoc.herokuapp.com/getUser';
     xmlhttp.open("GET", url, false);
@@ -88,7 +87,7 @@ function simpleTemplating(data) {
     initials = jsResult["staffcoc"][i]["initials"].toLowerCase();
 
 
-    g += x + jsResult["staffcoc"][i]["initials"].toLowerCase() + ')%20AND%20AUTHFIRST(' + jsResult["staffcoc"][i]["staffLastName"].toLowerCase() +')'+ y;
+    g += x + '('+jsResult["staffcoc"][i]["staffLastName"].toLowerCase() + ')%20AND%20AUTHFIRST(' + jsResult["staffcoc"][i]["initials"].toLowerCase() +')'+ y;
     console.log(g);
 
 
