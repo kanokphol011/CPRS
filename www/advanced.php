@@ -11,6 +11,13 @@ session_start();
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <style>
+        p{
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -25,6 +32,9 @@ session_start();
 
     <script>
             function collectJSON(){
+
+                var authorAllurl = new Array;
+                document.getElementById("showName").innerHTML = "";
          
                 var xmlhttp = new XMLHttpRequest();
                 var Title = document.getElementById("TitleName").value;
@@ -91,11 +101,11 @@ session_start();
                 }
                 if(!DateFrom === false && !DateTo===false){
                     if(!y=== true){
-                        y+=x+'query=PUBYEAR%20>%20'+DateFrom+'AND%20PUBYEAR%20<%20'+DateTo;
+                        y+=x+'query=PUBYEAR%20>%20'+(DateFrom-1)+'%20AND%20PUBYEAR%20<%20'+(DateTo+1);
                         console.log(11);
                     } 
                     else {
-                        y+='&PUBYEAR%20>%20'+DateFrom+'AND%20PUBYEAR%20<%20'+DateTo;       
+                        y+='AND%20PUBYEAR%20>%20'+(DateFrom-1)+'%20AND%20PUBYEAR%20<%20'+(DateTo+1);       
                         console.log(12);
                     }
                 }
@@ -120,11 +130,31 @@ session_start();
                      var jsResult = JSON.parse(result);
                      
                      var c = jsResult["search-results"]["entry"].length;
-                     var r = "";
+                     var r = "<div class='card'><div class='card-body'>";
                      for(i =0;i<c;i++){
                         var meet =jsResult["search-results"]["entry"][i]["link"][2]["@href"];
-                        r += "<h4><b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</h4></br>";
+                        r += "<h4><b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</h4>";
                         //r += i+1 +". <b>"+ jsResult["search-results"]["entry"][i]["preferred-name"]["surname"] + "</b> ,<i>"+jsResult["search-results"]["entry"][i]["preferred-name"]["given-name"]+"</i> <i> "+jsResult["search-results"]["entry"][i]["affiliation-current"]["affiliation-name"]+"</i>,"+jsResult["search-results"]["entry"][i]["document-count"]+"</br>";
+                     
+                        authorAllurl[i] = jsResult["search-results"]["entry"][i]["prism:url"];
+                        var urlAuthor = authorAllurl[i]+'?field=authors&apiKey=185547eee67ed06e5e817a0f227d23fe&httpAccept=application%2Fjson';
+                        xmlhttp.open("GET", urlAuthor, false);
+                        xmlhttp.send();
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                        r += "<h5><b>Authors : </b>";
+                        var resultA = xmlhttp.responseText;
+                        var jsResultA = JSON.parse(resultA);
+                        var datastaff = jsResultA["abstracts-retrieval-response"]["authors"]["author"].length;
+
+                        for(a=0;a<datastaff;a++){
+                            if(a>=0 && a<(datastaff-1)){
+                                r+= jsResultA["abstracts-retrieval-response"]["authors"]["author"][a]["ce:indexed-name"]+",";
+                            }else if(a==(datastaff-1)){
+                                r+= jsResultA["abstracts-retrieval-response"]["authors"]["author"][a]["ce:indexed-name"]+"</h5>";
+                        }
+                    }
+                   }
+                   r += "<p> Number of Citations: "+ jsResult["search-results"]["entry"][i]["citedby-count"]+"</p><br><br>";
                      }
                      document.getElementById("showName").innerHTML = r;
                 }
@@ -253,7 +283,7 @@ session_start();
                                 var yearSelect=document.getElementById("yearselect");
                                 var myDate = new Date();
                                 var year = myDate.getFullYear();
-                                for(var j =2005;j<=year ;j++){
+                                for(var j =1990;j<=year ;j++){
                                    // yearselect.options[y]=new Option(thisyear, thisyear);
     
                                    var option = document.createElement('option');
@@ -275,7 +305,7 @@ session_start();
                                     var yearSelectto=document.getElementById("yearselectto");
                                     var myYear = new Date();
                                     var years = myYear.getFullYear();
-                                    for(var k =2005;k<=years ;k++){
+                                    for(var k =1990;k<=years ;k++){
         
                                        var option = document.createElement('option');
                                        //option.value = k;     

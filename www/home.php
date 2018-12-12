@@ -27,7 +27,10 @@ session_start();
     <link rel="stylesheet" rel="stylesheet" type="text/css" href="css/home.css">
     <script>
 
+        
+
         function collectJSON(){
+            var authorAllurl = new Array;
             document.getElementById("show").innerHTML = "";
          var xmlhttp = new XMLHttpRequest();
          var all = document.getElementById("all").value;
@@ -58,9 +61,31 @@ session_start();
               var c = jsResult["search-results"]["entry"].length;
               var r = "<div class='card'><div class='card-body'>";
               for(i =0;i<c;i++){
-                var meet =jsResult["search-results"]["entry"][i]["link"][2]["@href"];
-                   r += "<h4><b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</h4>"+ "<p> Number of Citations:"+ jsResult["search-results"]["entry"][i]["citedby-count"]+"</p><br><br>";
-              }
+                    var meet =jsResult["search-results"]["entry"][i]["link"][2]["@href"];
+                    
+
+                   r += "<h4><b><a href="+meet+">"+ jsResult["search-results"]["entry"][i]["dc:title"] + "</a></b>,<i> "+jsResult["search-results"]["entry"][i]["prism:publicationName"]+"</i>, "+jsResult["search-results"]["entry"][i]["prism:coverDisplayDate"]+"</h4>";
+              
+                   authorAllurl[i] = jsResult["search-results"]["entry"][i]["prism:url"];
+                   var urlAuthor = authorAllurl[i]+'?field=authors&apiKey=185547eee67ed06e5e817a0f227d23fe&httpAccept=application%2Fjson';
+                   xmlhttp.open("GET", urlAuthor, false);
+                   xmlhttp.send();
+                   if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                       r += "<h5><b>Authors : </b>";
+                    var resultA = xmlhttp.responseText;
+                    var jsResultA = JSON.parse(resultA);
+                    var datastaff = jsResultA["abstracts-retrieval-response"]["authors"]["author"].length;
+
+                    for(a=0;a<datastaff;a++){
+                        if(a>=0 && a<(datastaff-1)){
+                            r+= jsResultA["abstracts-retrieval-response"]["authors"]["author"][a]["ce:indexed-name"]+",";
+                        }else if(a==(datastaff-1)){
+                            r+= jsResultA["abstracts-retrieval-response"]["authors"]["author"][a]["ce:indexed-name"]+"</h5>";
+                        }
+                    }
+                   }
+                   r += "<p> Number of Citations: "+ jsResult["search-results"]["entry"][i]["citedby-count"]+"</p><br><br>";
+                }
              
              
               document.getElementById("show").innerHTML = r;
