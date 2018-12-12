@@ -1,16 +1,16 @@
 var xmlhttp = new XMLHttpRequest();
 var url = '';
-var name, lastname, meet, issuse, total, to;
+var name, lastname, meet, issuse, total, to,initials;
 var you = '';
 var htmldata = '';
 var htmlname = '';
 var r = '';
-var x = 'https://api.elsevier.com/content/search/scopus?query=ALL(';
-var y = ')&apiKey=185547eee67ed06e5e817a0f227d23fe';
+var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
+    var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
 $(function () {
         // is the string "id"
 
-        url = 'https://staffcoc.000webhostapp.com/db.json';
+        url = 'https://staffcoc.herokuapp.com/getUser/';
         xmlhttp.open("GET", url, false);
         xmlhttp.send();
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -26,6 +26,7 @@ $(function () {
 
                 name = jsResult["staffcoc"][i]["staffName"].toLowerCase();
                 lastname = jsResult["staffcoc"][i]["staffLastName"].toLowerCase();
+                initials = jsResult["staffcoc"][i]["initials"].toLowerCase();
                 g += x + jsResult["staffcoc"][i]["staffName"].toLowerCase() + '%20AND%20' + jsResult["staffcoc"][i]["staffLastName"].toLowerCase() + y;
 
 

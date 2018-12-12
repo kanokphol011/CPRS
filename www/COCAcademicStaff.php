@@ -87,7 +87,7 @@ session_start();
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <ul class="nav navbar-nav">&nbsp;</ul>
                         <ul class="nav navbar-nav navbar-left"></ul>
-                        <ul class="col-md-8">
+                        <ul class="col-md-10">
                          
                             <h3>List of COC academic staff</h3>
                             
@@ -107,7 +107,7 @@ session_start();
                         
                         <a href="allStaff.php">
                             
-                            <button class="btn btn-primary" type="submit" id="searchB">
+                            <button class="btn btn-primary btn-lg" type="submit" id="searchB">
                                     Search All &nbsp;  &nbsp;   
                             <span class="glyphicon glyphicon-search"></span> </button></a>
                         <!-- </ul> -->

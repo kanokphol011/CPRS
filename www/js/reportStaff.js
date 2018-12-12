@@ -2,7 +2,7 @@ var xmlhttp = new XMLHttpRequest();
 var urlSearchParams = URL.searchParams;
 let params = (new URL(document.location)).searchParams;
 let tid = params.get("id");
-let name = params.get("name");
+let initials = params.get("initials");
 let lastname = params.get("lastname");
 let yearfrom = parseInt(params.get("year")); 
 let yearto = parseInt(params.get("to"));
@@ -24,7 +24,7 @@ var stockDatabase = new Array;
 $(function(){
     // is the string "id"
     
-     url ='https://staffcoc.000webhostapp.com/db.json';
+     url ='https://staffcoc.herokuapp.com/getUser/';
     xmlhttp.open("GET", url, false);
     xmlhttp.send();
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
@@ -40,7 +40,8 @@ $(function(){
             if(parseInt(jsResult["staffcoc"][i]["id"])===parseInt(tid)){
                name =jsResult["staffcoc"][i]["staffName"].toLowerCase();
                lastname = jsResult["staffcoc"][i]["staffLastName"].toLowerCase();
-            
+               initials = jsResult["staffcoc"][i]["initials"].toLowerCase();
+
               r += "<b>"+ jsResult["staffcoc"][i]["position"] + "</b> <b> "+jsResult["staffcoc"][i]["staffName"]+"</b> <b>"+jsResult["staffcoc"][i]["staffLastName"]+"</b></a></br>";
               
               //return pop;  
@@ -56,12 +57,13 @@ $(function(){
     for(l=0;l<=(yearto-yearfrom);l++){
         numYearB[l] = 0;
     }   
-    var x ='https://api.elsevier.com/content/search/scopus?query=ALL(';
+    var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
     var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20>%20'+(yearfrom-1)+'%20AND%20PUBYEAR%20<%20'+(yearto+1)+''+y;
+    
+    url = x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20>%20'+(yearfrom-1)+'%20AND%20PUBYEAR%20<%20'+(yearto+1)+''+y;
 
     if(yearfrom==yearto){
-        url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
+        url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
     }
 
     console.log(url);
@@ -233,11 +235,11 @@ function saveArtType() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //URLข้อมูลauthorทั้งหมด
 $(function(){
-    var x ='https://api.elsevier.com/content/search/scopus?query=ALL(';
+    var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
     var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
+    url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
     if(yearfrom==yearto){
-        url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
+        url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
     }
     // console.log('get success');
     xmlhttp.open("GET", url, false);
@@ -361,11 +363,11 @@ $(function(){
 function downloadCSV(args) {
 
     var stockData = new Array;
-    var x ='https://api.elsevier.com/content/search/scopus?query=ALL(';
+    var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
     var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
+    url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
     if(yearfrom==yearto){
-        url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
+        url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
     }
     console.log('get success');
     xmlhttp.open("GET", url, false);
@@ -429,11 +431,11 @@ function downloadCSV(args) {
 // })
 
 $(function(){
-    var x ='https://api.elsevier.com/content/search/scopus?query=ALL(';
+    var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
     var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
+    url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
     if(yearfrom==yearto){
-        url =x+name+'%20AND%20'+lastname+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
+        url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
     }
     xmlhttp.open("GET", url, false);
     xmlhttp.send();

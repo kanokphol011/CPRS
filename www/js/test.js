@@ -1,6 +1,6 @@
 var xmlhttp = new XMLHttpRequest();
 var url = '';
-var name, lastname, total;
+var name, lastname, total,initials;
 var you = '';
 var all = '';
 var htmldata = '';
@@ -9,8 +9,8 @@ var r = '';
 var ice = '';
 var hearname = '';
 var hearclose = '';
-var x = 'https://api.elsevier.com/content/search/scopus?query=ALL(';
-var y = ')&apiKey=185547eee67ed06e5e817a0f227d23fe';
+var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
+    var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
 var toAdd = document.createDocumentFragment();
 var to = [];
 
@@ -84,11 +84,11 @@ function simpleTemplating(data) {
     
     name = jsResult["staffcoc"][i]["staffName"].toLowerCase();
     console.log(name);
-
-
     lastname = jsResult["staffcoc"][i]["staffLastName"].toLowerCase();
+    initials = jsResult["staffcoc"][i]["initials"].toLowerCase();
 
-    g += x + jsResult["staffcoc"][i]["staffName"].toLowerCase() + '%20AND%20' + jsResult["staffcoc"][i]["staffLastName"].toLowerCase() + y;
+
+    g += x + jsResult["staffcoc"][i]["initials"].toLowerCase() + ')%20AND%20AUTHFIRST(' + jsResult["staffcoc"][i]["staffLastName"].toLowerCase() +')'+ y;
     console.log(g);
 
 

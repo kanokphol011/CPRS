@@ -41,9 +41,9 @@ $(function(){
 })
 
 $(function(){
-    var x ='https://api.elsevier.com/content/search/scopus?query=ALL(';
-    var y=')&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url = x+initials+'%20AND%20'+lastname+y;
+    var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
+    var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
+    url = x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')'+y;
     console.log(url);
     xmlhttp.open("GET", url, false);
     xmlhttp.send();
@@ -79,7 +79,7 @@ function myFunction() {
         xmlhttp.send();
         //console.log(DateFrom)
         
-       var url = "reportStaffs.htm?id="+tid+"&name="+name+"&lastname="+lastname+"&year="+DateFrom+"&to="+DateTo;
+       var url = "reportStaffs.htm?id="+tid+"&initials="+initials+"&lastname="+lastname+"&year="+DateFrom+"&to="+DateTo;
      // console.log(selector);
 
 
