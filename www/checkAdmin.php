@@ -19,6 +19,7 @@
         if($row["rights"] == "admin")
 			{
                 $_SESSION["IDname"] = $row["usernameAdmin"];
+                $_SESSION["status"] = $row["rights"];
                 $_SESSION["ReportError"]=null;
                 header("location:home.php");
 			}
