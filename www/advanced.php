@@ -65,7 +65,7 @@ session_start();
                        console.log(2);
                     }  
                     else{
-                        y+='&AUTHLASTNAME('+Lauth+')';
+                        y+='&%20AND%20AUTHLASTNAME('+Lauth+')';
                         console.log(3);  
                     }         
                 }
@@ -75,7 +75,7 @@ session_start();
                        console.log(5);
                     }  
                     else{
-                        y+='&authfirst('+Nauth+')';
+                        y+='&%20AND%20authfirst('+Nauth+')';
                         console.log(6);
                     }         
                 }
@@ -85,7 +85,7 @@ session_start();
                         console.log(7);
                     } 
                     else {
-                        y+='&KEY('+Keyword+')';       
+                        y+='&%20AND%20KEY('+Keyword+')';       
                         console.log(8);
                     }
                 }
@@ -95,7 +95,7 @@ session_start();
                         console.log(9);
                     } 
                     else {
-                        y+='&NOT%20KEY('+Exclude+')';       
+                        y+='&%20AND%20NOT%20KEY('+Exclude+')';       
                         console.log(10);
                     }
                 }
@@ -105,7 +105,7 @@ session_start();
                         console.log(11);
                     } 
                     else {
-                        y+='AND%20PUBYEAR%20>%20'+(DateFrom-1)+'%20AND%20PUBYEAR%20<%20'+(DateTo+1);       
+                        y+='&%20AND%20PUBYEAR%20>%20'+(DateFrom-1)+'%20AND%20PUBYEAR%20<%20'+(DateTo+1);       
                         console.log(12);
                     }
                 }
@@ -115,7 +115,7 @@ session_start();
                       console.log(13);
                     } 
                     else {
-                        y+='&AFFIL(Prince%20of%20Songkla%20University)';
+                        y+='&%20AND%20&AFFIL(Prince%20of%20Songkla%20University)';
                         console.log(14);
                     }
                 }

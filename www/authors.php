@@ -33,18 +33,19 @@ session_start();
         var Nauth = document.getElementById("Nauthor").value;            
         var url ='';
         if(!Nauth === false && !Lauth == false && checkBox.checked === true ){
-          url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&%20and%20authfirst('+Nauth+')&%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';         
+          url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&%20AND%20authfirst('+Nauth+')&%20AND%2020AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';         
         } 
         if (!Nauth === false && !Lauth === false && checkBox.checked === false) {
-            url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&%20and%20authfirst('+Nauth+')&apiKey=185547eee67ed06e5e817a0f227d23fe';
+            url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&%20AND%20authfirst('+Nauth+')&apiKey=185547eee67ed06e5e817a0f227d23fe';
         }
         if (!Nauth === true && !Lauth == false && checkBox.checked === true ) {
-           url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';        }
+           url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&%20AND%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';   
+             }
         if (!Nauth === true && !Lauth==false && checkBox.checked === false ) {
             url = 'https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME('+Lauth+')&apiKey=185547eee67ed06e5e817a0f227d23fe';
         }
         if  (!Nauth === false &&!Lauth ===true && checkBox.checked === true ) {
-            url = 'https://api.elsevier.com/content/search/scopus?query=authfirst('+Nauth+')%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';
+            url = 'https://api.elsevier.com/content/search/scopus?query=authfirst('+Nauth+')&%20AND%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';
         }
         if  (!Nauth === false && !Lauth === true && checkBox.checked === false ) {
             url = 'https://api.elsevier.com/content/search/scopus?query=authfirst('+Nauth+')&apiKey=185547eee67ed06e5e817a0f227d23fe';    

@@ -39,16 +39,16 @@ session_start();
         // var url = 'https://api.elsevier.com/content/search/scopus?query=AUTHOR-NAME('+auth+')&apiKey=c1012bdfeae663cbf772fda975c25fd3';
          
         if (!all === false && !checkBox.checked === false){
-         url = 'https://api.elsevier.com/content/search/scopus?query=ALL('+all+')%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe'; 
-        console.log(1);      
+         url = 'https://api.elsevier.com/content/search/scopus?query=ALL('+all+')%20AND%20AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe'; 
+        console.log(url);      
       }
         if(!all === false && !checkBox.checked === true){
             url = 'https://api.elsevier.com/content/search/scopus?query=ALL('+all+')&apiKey=185547eee67ed06e5e817a0f227d23fe';
-            console.log(2);        
+            console.log(url);        
         }
          if(!all === true && !checkBox.checked === false){
             url = 'https://api.elsevier.com/content/search/scopus?query=AFFIL(Prince%20of%20Songkla%20University)&apiKey=185547eee67ed06e5e817a0f227d23fe';
-            console.log(3);     
+            console.log(url);     
         }
          console.log(url)
          xmlhttp.open("GET", url, false);
