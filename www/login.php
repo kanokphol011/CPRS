@@ -25,6 +25,7 @@ $err = $client->getError();
 	if(isset($result[0])){
 		header("location:home.php");
 		$_SESSION["IDname"] = $result[0];
+		$_SESSION["status"] = "basic";
 		$_SESSION["ReportError"]=null;
 	}
 										   

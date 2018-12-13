@@ -87,30 +87,51 @@ session_start();
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <ul class="nav navbar-nav">&nbsp;</ul>
                         <ul class="nav navbar-nav navbar-left"></ul>
-                        <ul class="col-md-10">
+                        <ul class="col-md-8">
                          
                             <h3>List of COC academic staff</h3>
                             
                         </ul>
-                        <!-- <ul class="nav navbar-nav navbar-right"> -->
-                        <!-- <li> -->
-                        <!-- <a href="addStaff.php">
-                            
-                            <button class="btn btn-primary btn-info" type="submit" id="searchB">
+                        <!-- <ul class='nav navbar-nav navbar-right'> -->
+                        <?php 
+                            if ($_SESSION["status"]== "admin"){
+                                echo "<a href='addStaff.php'>";
+                                echo "        <button class='btn btn-primary btn-info' type='submit' id='searchB'>";
+                                echo "            Add Staff  &nbsp;  &nbsp; ";  
+                                echo "        <span class='glyphicon glyphicon-plus'></span> </button></a>&nbsp;  &nbsp;";
+                                echo "    <a href='deleteStaff.php'>";
+                                echo "        <button class='btn btn-primary btn-danger' type='submit' id='searchB'>";
+                                echo "            Delete Staff  &nbsp;  &nbsp; ";  
+                                echo "        <span class='glyphicon glyphicon-minus'></span> </button></a>&nbsp;  &nbsp; ";
+                                echo "    <a href='allStaff.php'>";
+                                echo "        <button class='btn btn-primary btn-lg' type='submit' id='searchB'>";
+                                echo "            Search All &nbsp;  &nbsp;";   
+                                echo "        <span class='glyphicon glyphicon-search'></span> </button></a>";
+                            }else if ($_SESSION["status"]== "basic"){
+                                echo "<ul class='nav navbar-nav navbar-right'>";
+                                echo "    <a href='allStaff.php'>";
+                                echo "        <button class='btn btn-primary btn-lg' type='submit' id='searchB'>";
+                                echo "            Search All &nbsp;  &nbsp;";   
+                                echo "        <span class='glyphicon glyphicon-search'></span> </button></a>";
+                                echo "    </ul>";
+                            }
+                        ?>
+                        <!-- <a href='addStaff.php'>
+                            <button class='btn btn-primary btn-info' type='submit' id='searchB'>
                                     Add Staff  &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-plus"></span> </button></a>&nbsp;  &nbsp;
-                         <a href="deleteStaff.php">
-                            <button class="btn btn-primary btn-danger" type="submit" id="searchB">
+                            <span class='glyphicon glyphicon-plus'></span> </button></a>&nbsp;  &nbsp;
+                         <a href='deleteStaff.php'>
+                            <button class='btn btn-primary btn-danger' type='submit' id='searchB'>
                                     Delete Staff  &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-minus"></span> </button></a>&nbsp;  &nbsp;  -->
+                            <span class='glyphicon glyphicon-minus'></span> </button></a>&nbsp;  &nbsp; 
                        
                         
-                        <a href="allStaff.php">
+                        <a href='allStaff.php'>
                             
-                            <button class="btn btn-primary btn-lg" type="submit" id="searchB">
+                            <button class='btn btn-primary btn-lg' type='submit' id='searchB'>
                                     Search All &nbsp;  &nbsp;   
-                            <span class="glyphicon glyphicon-search"></span> </button></a>
-                        <!-- </ul> -->
+                            <span class='glyphicon glyphicon-search'></span> </button></a>
+                        </ul> -->
                     </div>
                   
                 </legend>
