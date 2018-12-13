@@ -46,7 +46,10 @@ $(function(){
 $(function(){
     var x ='https://api.elsevier.com/content/search/scopus?query=AUTHLASTNAME';
     var y='&apiKey=185547eee67ed06e5e817a0f227d23fe';
-    url = x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')'+y;
+    url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20>%20'+yearfrom+'%20AND%20PUBYEAR%20<%20'+yearto+1+''+y;
+    if(yearfrom==yearto){
+        url =x+'('+ lastname +')%20AND%20AUTHFIRST(' +initials+')AND%20PUBYEAR%20=%20'+yearfrom+''+y;
+    }
     console.log(url);
     xmlhttp.open("GET", url, false);
     xmlhttp.send();
