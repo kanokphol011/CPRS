@@ -51,77 +51,79 @@ session_start();
                 var x='https://api.elsevier.com/content/search/scopus?';
                 if(!Title === false){
                     if(!y===true){
-                        y+=x+'query=title('+Title+')';
-                        console.log(1);
+                        y+=x+'query=TITLE("'+Title+'")';
+                        console.log(y);
                     }
                     else{
                        // y+=x+'query=title('+Title+')';
-                        console.log(2);
+                        console.log(y);
                     }
                 }
                 if(!Lauth === false){
                     if(!y=== true){
                        y+=x+'query=AUTHLASTNAME('+Lauth+')';
-                       console.log(2);
+                       console.log(y);
                     }  
                     else{
                         y+='&%20AND%20AUTHLASTNAME('+Lauth+')';
-                        console.log(3);  
+                        console.log(y);  
                     }         
                 }
                 if(!Nauth === false){
                     if(!y=== true){
                        y+=x+'query=authfirst('+Nauth+')';
-                       console.log(5);
+                       console.log(y);
                     }  
                     else{
                         y+='&%20AND%20authfirst('+Nauth+')';
-                        console.log(6);
+                        console.log(y);
                     }         
                 }
                 if(!Keyword === false){
                     if(!y=== true){
                         y+=x+'query=KEY('+Keyword+')';
-                        console.log(7);
+                        console.log(y);
                     } 
                     else {
                         y+='&%20AND%20KEY('+Keyword+')';       
-                        console.log(8);
+                        console.log(y);
                     }
                 }
                 if(!Exclude === false){
                     if(!y=== true){
                         y+=x+'query=NOT%20KEY('+Exclude+')';
-                        console.log(9);
+                        console.log(y);
                     } 
                     else {
                         y+='&%20AND%20NOT%20KEY('+Exclude+')';       
-                        console.log(10);
+                        console.log(y);
                     }
                 }
                 if(!DateFrom === false && !DateTo===false){
                     if(!y=== true){
                         y+=x+'query=PUBYEAR%20>%20'+(DateFrom-1)+'%20AND%20PUBYEAR%20<%20'+(DateTo+1);
-                        console.log(11);
+                        console.log(y);
                     } 
                     else {
                         y+='&%20AND%20PUBYEAR%20>%20'+(DateFrom-1)+'%20AND%20PUBYEAR%20<%20'+(DateTo+1);       
-                        console.log(12);
+                        console.log(y);
                     }
                 }
                 if(!checkBox.checked === false){
                     if(!y=== true){
                         y+=x+'query=AFFIL(Prince%20of%20Songkla%20University)';
-                      console.log(13);
+                      console.log(y);
                     } 
                     else {
                         y+='&%20AND%20&AFFIL(Prince%20of%20Songkla%20University)';
-                        console.log(14);
+                        console.log(y);
                     }
                 }
                 
                 console.log(y+ApiKey);
                 var url =y+ApiKey;
+                console.log(url);
+                
                 xmlhttp.open("GET", url, false);
                 xmlhttp.send();
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
