@@ -1,7 +1,7 @@
 # CPRS
  1. dowload xampp(version 5.6.39) 
     link => https://www.apachefriends.org/download.html
- 2. extract cprs file in htdocs ( default => C:\xampp\htdocs )
+ 2. extract #CPRS# project file in htdocs ( default => C:\xampp\htdocs )
  3. open Google Chome and install extension  
     https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?utm_source=chrome-ntp-icon
  4. open xampp and start Apache and MySQL
